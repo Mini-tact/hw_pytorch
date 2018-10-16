@@ -1,0 +1,8 @@
+1.文件读取函数
+pd.read_excel(io, sheetname=0,header=0,skiprows=None,index_col=None,names=None,
+                arse_cols=None,date_parser=None,na_values=None,thousands=None,
+                convert_float=True,has_index_names=None,converters=None,dtype=None,
+                true_values=None,false_values=None,engine=None,squeeze=False,**kwds)
+
+2.算法
+2.1不平衡数据分类算法（Borderline-SMOTE算法）

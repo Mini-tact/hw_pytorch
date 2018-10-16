@@ -8,6 +8,7 @@ class wirte_data_into_excle():
         self.writer = pd.ExcelWriter(filename, engine='openpyxl')
         self.filename = filename
     def write(self):
+        return 1
 
 
 

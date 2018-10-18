@@ -6,10 +6,8 @@ class _const:
         pass
 
     def __setattr__(self, name, value):
-        if self.__dict__.has_key(name):
+        if name in self.__dict__:    #判断是否已经在__dict__中，字典中的值是不能改变的
             raise self.ConstError("Can not change const %s" % name)
-        if not name.isupper():
-            raise self.ConstCaseError("const name %s is not all upper" % name)
         self.__dict__[name] = value
 
 
@@ -47,6 +45,7 @@ _const.dictionary=  {'无崩塌滑坡及冲沟或发育轻微': 0,
                 '>2m':3,
                 '10-5m':4,
                 '轻微':0,
+                '硬岩':1,
                 '风化和节理发育的硬岩':1,
                 '软硬相间':2,
                 '软岩,黄土':3,
@@ -76,14 +75,16 @@ _const.dictionary=  {'无崩塌滑坡及冲沟或发育轻微': 0,
                 '300-100m':1,
                 '500-300m':2,
                 '>500m':3,
+
                 '不易发':0,
                 '$不易发$':0,
                 '低易发':1,
                 '$低易发$':1,
+                '$中易发$':2,
                 '中易发':2,
                 '$中等$':2,
                 '$易发$':3,
-                '易发':4,
-                '$高易发$':5,
-                '高易发':5
+                '易发':3,
+                '$高易发$':4,
+                '高易发':4
         }

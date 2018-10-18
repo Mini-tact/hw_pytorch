@@ -8,7 +8,7 @@ import torch
 deal_data(r'C:\Users\50828\PycharmProjects\hw_pytorch\基于深度学习的泥石流建模\西藏地灾隐患点（日喀则）.xls',1,const.user_col)
 
 #新建一个神经网络
-Neu_network = Net(13,100,100,5)
+Neu_network = Net(13,100,100,4)
 
 #优化
 optimizer = optim.SGD(Neu_network.parameters(),lr=0.01) #使用SGD优化函数
@@ -20,6 +20,7 @@ for i in range(100):
     loss = loss_func(prediction,const.train_Value)
     if(i%50==0):
         print('Loss=%.4f'%loss.item())
+
     optimizer.zero_grad()  # 将梯度置零，不置会与上一步的梯度进行相加
     loss.backward()  # 自动求导
     optimizer.step()

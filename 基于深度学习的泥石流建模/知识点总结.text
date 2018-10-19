@@ -6,3 +6,15 @@ pd.read_excel(io, sheetname=0,header=0,skiprows=None,index_col=None,names=None,
 
 2.算法
 2.1不平衡数据分类算法（Borderline-SMOTE算法）
+
+
+
+模块的存储和读取
+您可以使用model.save(filepath)将Keras模型保存到单个HDF5文件中，该文件将包含：
+    模型的体系结构，允许重新创建模型
+    模型的权重
+    训练配置（损失，优化器）
+    优化器的状态，允许您从中断的位置恢复训练。然后，您可以使用keras.models.load_model(filepath) 重新实例化您的模型。
+    model.save('model')
+    from keras.models import load_model
+    model = load_model('model')

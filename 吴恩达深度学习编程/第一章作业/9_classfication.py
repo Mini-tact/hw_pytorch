@@ -80,10 +80,10 @@ def network(X, Y):
 '''
 def init_parameters(n_x, n_h, n_y):
     np.random.seed(2)
-    W1= np.random.randn(n_h, n_x)*0.01
-    b1= np.zeros((n_h),1)
+    W1 = np.random.randn(n_h, n_x)*0.01
+    b1 = np.zeros((n_h, 1))
     W2 = np.random.randn(n_y, n_h) * 0.01
-    b2 = np.zeros((n_y), 1)
+    b2 = np.zeros((n_y, 1))
 
     init_parameters= {
         'W1': W1,
@@ -115,11 +115,11 @@ def forward_propagation(X, init_param):
     W2 = init_param['W2']
     b2 = init_param['b2']
 
-    Z1= np.dot(W1, X)+b1
-    A1= sigmid(Z1)
+    Z1 = np.dot(W1, X)+b1
+    A1 = np.tanh(Z1)
 
-    Z2= np.dot(W2, X)+b2
-    A2= sigmid(Z1)
+    Z2 = np.dot(W2, A1)+b2
+    A2 = sigmid(Z2)
 
     cache = {
         'Z1': Z1,
@@ -159,7 +159,7 @@ def back_propagation(param, cache, X, Y):
     dZ2 = A2 - Y
     dW2 = np.dot(dZ2, A1.T)/m
     db2 = np.sum(dZ2, axis=1, keepdims=True)/m
-    dZ1 = np.dot(W2.T, dZ2)*A1(1-A1)
+    dZ1 = np.dot(W2.T, dZ2)*(1 - np.power(A1, 2))
     dW1 = np.dot(dZ1, X.T)/m
     db1 = np.sum(dZ1, axis=1, keepdims=True)/m
 
@@ -167,7 +167,7 @@ def back_propagation(param, cache, X, Y):
         'dW1':dW1,
         'db1':db1,
         'dW2':dW2,
-        'db1':db2,
+        'db2':db2,
     }
     return grads
 
@@ -227,12 +227,25 @@ def model(X, Y, n_h, num_iterations=10000):
 
     return param
 
+"""
+预测
+使用模型通过构建predict()函数去预测，使用前向传到预测结果
+"""
+
+def predict(param,X):
+
+    cache = forward_propagation(X, param)
+    prediction = np.round(cache['A2'])
+
+    return prediction
 
 
-param = model(X, Y, 4)
-
-
-
+param = model(X, Y, 4, 10000)
+plot_decision_boundary(lambda x: predict(param, x.T), X, Y)
+plt.title("Decision Boundary for hidden layer size" + str(4))
+plt.show()
+predictions = predict(param, X)
+print ('Accuracy: %d' % float((np.dot(Y, predictions.T) +np.dot(1-Y, 1-predictions.T))/float(Y.size)*100) + '%')
 
 
 

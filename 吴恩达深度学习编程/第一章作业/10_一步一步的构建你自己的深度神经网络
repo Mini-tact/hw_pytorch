@@ -1,0 +1,61 @@
+"""
+实现构建神经网络的所有模块和使用构建的模块在接下来的任务中构建你想构建的任意神经网络
+1.开发一个直观的覆盖神经网络的模块
+2.构建功能（forward_progation,backward_propagation,loistic_loss等),这些会帮助你分解你的代码和减轻构建神经网络的过程】
+3.根据你描述的结构初始化/更行参数
+
+在这个任务之前你必须会
+1.使用非线性的单元，例如relu来改善你的模型
+2.构建一个深层的神经网络
+3.构建一个方便使用的神经网络类
+
+会使用到的包
+numpy matplatlib
+使用到的外部类
+dnn_utils
+testCases
+
+np.random.seed(1)是用来保持所有的随机函数一致
+"""
+"""
+任务大纲
+构建你的神经玩过，你将会构建几个”帮助函数“。这些帮助函数将会被使用在下面的任务中去构建2层和多次的神经网络。每一个小的帮助函数执行都会构建它详细的步骤
+并且和你一起完成它必要的步骤，你将会;
+1.初始花2层和n层神经网络的参数
+2.执行前向传播模块
+– Complete the LINEAR part of a layer’s forward propagation step (resulting inZ
+– We give you the ACTIVATION function (relu/sigmoid).
+– Combine the previous two steps into a new [LINEAR->ACTIVATION] forwardfunction.
+– Stack the [LINEAR->RELU] forward function L-1 time (for layers 1 throughL-1) and add a [LINEAR->SIGMOID] at the end (for the final layer L). Thisgives you a new L_model_forward functio
+3.执行反向传播模块
+– Complete the LINEAR part of a layer’s backward propagation step.
+– We give you the gradient of the ACTIVATE function (relu_backward/sigmoid_backward)
+– Combine the previous two steps into a new [LINEAR->ACTIVATION] backward function.
+– Stack [LINEAR->RELU] backward L-1 times and add [LINEAR->SIGMOID]
+backward in a new L_model_backward function
+4.最后更新参数
+
+
+Note that for every forward function, there is a corresponding backward function.
+That is why at every step of your forward module you will be storing some values in a
+cache. The cached values are useful for computing gradients. In the backpropagation
+module you will then use the cache to calculate the gradients. This assignment will show
+you exactly how to carry out each of these steps.
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
